@@ -1,21 +1,23 @@
 /**
  * es6 modules and imports
  */
-import { loadingPage } from './loading';
-loadingPage();
+import { getMovies, postOptions} from './api.js';
+import $ from 'jquery';
+import { loadingPage, loadedPage } from './loading';
 
-/**
- * require style imports
- */
-import { getMovies } from './api.js';
+
+loadingPage();
 
 
 getMovies().then((movies) => {
-  console.log('Here are all the movies:');
-  movies.forEach(({title, rating, id}) => {
-    console.log(`id#${id} - ${title} - rating: ${rating}`);
-  });
+  $('#main-container').html(loadedPage(movies));
+  $('#movie-add-form').removeClass('hidden');
 }).catch((error) => {
   alert('Oh no! Something went wrong.\nCheck the console for details.');
   console.log(error);
+});
+
+$('#movie-add-btn').click((e) => {
+  e.preventDefault();
+  getMovies(url, postOptions(movies))
 });
