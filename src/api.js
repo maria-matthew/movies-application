@@ -15,4 +15,14 @@ export const postOptions = (moviePost) => {
     }
 };
 
+export const patchOptions = (moviePost) => {
+    return {
+        method: 'PATCH',
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(moviePost),
+    }
+};
+
 

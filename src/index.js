@@ -21,8 +21,14 @@ $('#movie-add-btn').click((e) => {
   const title = $("#movie-title-input").val();
   const rating = $("#rating").val();
   console.log("test");
-  getMovies(postOptions({title, rating})).then((movies) => {
-      $('#ul-for-movies').append(loadedPage(movies));
+  getMovies(postOptions({title, rating}));
+  getMovies().then((movies) => {
+      $('#ul-for-movies').html(loadedPage(movies));
   });
 
+});
+
+$(document).on('click', '.movie-item', () => {
+    console.log('im a click');
+    $(this).next().html('<input type="text">');
 });

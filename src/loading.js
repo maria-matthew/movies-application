@@ -11,8 +11,10 @@ export const loadingPage = () => {
 export const loadedPage = (movies) => {
     let htmlOutput = '';
     movies.forEach(({title, rating}) => {
-        htmlOutput += `<li>The rating for ${title} is ${rating}</li>`;
+        htmlOutput += `<li class="movie-item">The rating for ${title} is ${rating}</li><form></form>`;
 
     });
     return htmlOutput
 };
+
+
