@@ -8,9 +8,8 @@ import { loadingPage, loadedPage } from './loading';
 
 loadingPage();
 
-
 getMovies().then((movies) => {
-  $('#main-container').html(loadedPage(movies));
+  $('#ul-for-movies').html(loadedPage(movies));
   $('#movie-add-form').removeClass('hidden');
 }).catch((error) => {
   alert('Oh no! Something went wrong.\nCheck the console for details.');
@@ -19,5 +18,11 @@ getMovies().then((movies) => {
 
 $('#movie-add-btn').click((e) => {
   e.preventDefault();
-  getMovies(url, postOptions(movies))
+  const title = $("#movie-title-input").val();
+  const rating = $("#rating").val();
+  console.log("test");
+  getMovies(postOptions({title, rating})).then((movies) => {
+      $('#ul-for-movies').append(loadedPage(movies));
+  });
+
 });
