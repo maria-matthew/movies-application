@@ -28,7 +28,39 @@ $('#movie-add-btn').click((e) => {
 
 });
 
-$(document).on('click', '.movie-item', () => {
+// $(document).on('click', '.movie-item', () => {
+//     console.log('im a click');
+//     $(this).next().html('<input type="text">');
+// });
+
+
+//idea: make it so that when the user hovers over the title, an edit
+//button appears and when the edit button is clicked the forms pops up
+//underneath
+
+//problem statement: have edit button appear when user hovers over list
+
+
+$(document).on('click', '.edit-btn', (e) => {
     console.log('im a click');
-    $(this).next().html('<input type="text">');
+    // $(document).children().css('background-color', 'yellow');
+    // $('li').css('background-color', 'yellow');
+    // $(this).css('background-color', 'yellow');
+    $(e.target).parent().next('.edit-movie').html(`<input type="text">`);
 });
+
+// $('.movie-item').hover(() => {
+//     console.log('hover');
+//     $('.edit-btn').toggleClass('hidden');
+// });
+
+$(document).on('mouseenter', '.movie-item', (e) => {
+    console.log('hover over');
+    $(e.target).children('.edit-btn').toggleClass('hidden');
+});
+
+$(document).on('mouseleave', '.movie-item', (e) => {
+    console.log('hover over');
+    $(e.target).children('.edit-btn').toggleClass('hidden');
+});
+
