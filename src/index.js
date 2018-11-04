@@ -46,7 +46,7 @@ $(document).on('click', '.edit-btn', (e) => {
     // $(document).children().css('background-color', 'yellow');
     // $('li').css('background-color', 'yellow');
     // $(this).css('background-color', 'yellow');
-    $(e.target).parent().next('.edit-movie').html(`<input type="text">`);
+    $(e.target).parent().next('.edit-movie').toggleClass('hidden');
 });
 
 // $('.movie-item').hover(() => {
@@ -64,3 +64,7 @@ $(document).on('mouseleave', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
 });
 
+$(document).on('click', 'submit-edit', () =>{
+    $(e.target).preventDefault();
+
+});
