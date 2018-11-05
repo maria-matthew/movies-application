@@ -26,7 +26,7 @@ export const loadedPage = (movies) => {
         htmlOutput += `<input type="submit" class="submit-edit"></form>`;
 
     });
-    return htmlOutput;
+    return htmlOutput
 };
 
 export const editMovie = () => {
