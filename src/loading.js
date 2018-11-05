@@ -16,7 +16,7 @@ export const loadingPage = () => {
 export const loadedPage = (movies) => {
     let htmlOutput = '';
     movies.forEach(({ title, rating, id }) => {
-        htmlOutput += `<li class="movie-item">The rating for ${title} is ${rating}`;
+        htmlOutput += `<li class="movie-item">The rating for ${title} is ${rating}`
         htmlOutput += `<button class="edit-btn hidden">Edit</button></li>`;
         htmlOutput += `<form class="edit-movie hidden">`;//form hidden until edit button is clicked
         htmlOutput += `<label for="${id}">Title: </label>`;
