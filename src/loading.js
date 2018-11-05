@@ -21,12 +21,12 @@ export const loadedPage = (movies) => {
             <button class="edit-btn hidden">Edit</button>
             <button class="delete-btn hidden">Delete</button>
         </li>
-        <form class="edit-movie hidden">
-            <label for="${id}">Title: </label>
+        <form class="edit-movie hidden row">
+            <label class="col s6" for="${id}">Title: </label>
                 <input type="text" id="${id}" value="${title}" class="title-edit">
-            <label for="${id}rating">Rating: </label>
+            <label class="col s6" for="${id}rating">Rating: </label>
                 <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
-            <input type="submit" class="submit-edit">
+            <input type="submit" class="submit-edit btn">
         </form>
         `;
     });

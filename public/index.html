@@ -4,47 +4,48 @@
     <meta charset="UTF-8" />
     <title>My Application</title>
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
 
     <div class="container">
-        <ul id="ul-for-movies">
 
-        </ul>
-        <form class="hidden" action="" id="movie-add-form">
-            <label for="movie-title-input">Please Enter A Movie Title
-                <input type="text" id="movie-title-input">
-            </label>
-            <label for="rating">Please Select A Rating for The Movie
-                <select name="rating" id="rating">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </label>
-            <button id="movie-add-btn">Submit</button>
-        </form>
-        <!--<form class="hidden" action="" id="movie-edit-form">-->
-            <!--<label for="movie-title-input">Please Enter A Movie Title-->
-                <!--<input type="text" id="movie-edit-input">-->
-            <!--</label>-->
-            <!--<label for="rating">Please Select A Rating for The Movie-->
-                <!--<select name="rating" id="rating">-->
-                    <!--<option value="1">1</option>-->
-                    <!--<option value="2">2</option>-->
-                    <!--<option value="3">3</option>-->
-                    <!--<option value="4">4</option>-->
-                    <!--<option value="5">5</option>-->
-                <!--</select>-->
-            <!--</label>-->
-            <!--<button id="movie-add-btn">Submit</button>-->
-        <!--</form>-->
+        <section class="row" id="ul-for-movies">
 
+            <!--Movie Names/Ratings-->
+
+        </section>
+
+        <section class="row">
+            <form class="hidden" action="" id="movie-add-form">
+                <label class="col s6" for="movie-title-input">Please Enter A Movie Title
+                    <input type="text" id="movie-title-input">
+                </label>
+                <div class="input-field col s4">
+                    <select name="rating" id="rating">
+                        <option value="" disabled>Choose A Rating</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <label for="rating">Please Select A Rating for The Movie</label>
+                </div>
+                <button class="col s2 btn" id="movie-add-btn">Submit</button>
+            </form>
+        </section>
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="/main.js"></script>
+    <script>
+        //Materialize css Functions
+
+        $(document).ready(function(){
+            $('#rating').formSelect();
+        });
+    </script>
 </body>
 </html>
