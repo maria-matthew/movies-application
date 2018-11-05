@@ -4,10 +4,11 @@
 import { getMovies, postOptions, putOptions, deleteOptions} from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
+import { getPosterImage, getMoviePoster } from "./movie-api";
 
 loadingPage();
-
-
+// console.log(getMoviePoster('Jack Reacher'));
+// console.log(getPosterImage('Jack Reacher'));
 //Loaded Page
 getMovies().then((movies) => {
   $('#ul-for-movies').html(loadedPage(movies));
@@ -17,18 +18,24 @@ getMovies().then((movies) => {
   console.log(error);
 });
 
+
+
 //Add Movie Function
 $('#movie-add-btn').click((e) => {
   e.preventDefault();
-  $(e.target).attr('disabled', true);
   const title = $("#movie-title-input").val();
   const rating = $("#rating").val();
+  if(title.length !== 0){
+      $(e.target).attr('disabled', true);
 
-  getMovies('', postOptions({title, rating}));
-  getMovies().then((movies) => {
-      $(e.target).attr('disabled', false);
-      $('#ul-for-movies').html(loadedPage(movies));
-  });
+      getMovies('', postOptions({title, rating}));
+      getMovies().then((movies) => {
+          $(e.target).attr('disabled', false);
+          $('#ul-for-movies').html(loadedPage(movies));
+      });
+  } else{
+      console.log('no dice');
+  }
 
 });
 
