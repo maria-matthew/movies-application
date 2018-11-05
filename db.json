@@ -16,79 +16,24 @@
       "id": 3
     },
     {
-      "title": "hi",
-      "rating": "1",
+      "title": null,
+      "rating": "5",
       "id": 4
     },
     {
-      "title": "hdsbds",
-      "rating": "1",
+      "title": "hello",
+      "rating": "3",
       "id": 5
     },
     {
-      "title": "hdsbds",
-      "rating": "1",
+      "title": null,
+      "rating": "2",
       "id": 6
     },
     {
-      "title": "hsdch",
-      "rating": "1",
+      "title": "null",
+      "rating": "3",
       "id": 7
-    },
-    {
-      "titleEdit": "hello",
-      "ratingEdit": "1",
-      "id": 8
-    },
-    {
-      "titleEdit": "hello",
-      "ratingEdit": "1",
-      "id": 9
-    },
-    {
-      "titleEdit": null,
-      "ratingEdit": "2",
-      "id": 10
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 11
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 12
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 13
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 14
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 15
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 16
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 17
-    },
-    {
-      "title": "hiu",
-      "rating": "1",
-      "id": 18
     }
   ]
 }
