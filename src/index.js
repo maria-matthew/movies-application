@@ -5,9 +5,10 @@ import { getMovies, postOptions, putOptions, deleteOptions} from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
 
-
 loadingPage();
 
+
+//Loaded Page
 getMovies().then((movies) => {
   $('#ul-for-movies').html(loadedPage(movies));
   $('#movie-add-form').removeClass('hidden');
@@ -16,24 +17,26 @@ getMovies().then((movies) => {
   console.log(error);
 });
 
+//Add Movie Function
 $('#movie-add-btn').click((e) => {
   e.preventDefault();
+  $(e.target).attr('disabled', true);
   const title = $("#movie-title-input").val();
   const rating = $("#rating").val();
 
   getMovies('', postOptions({title, rating}));
   getMovies().then((movies) => {
+      $(e.target).attr('disabled', false);
       $('#ul-for-movies').html(loadedPage(movies));
   });
 
 });
 
-
+//Edit/Delete Button Animations
 $(document).on('click', '.edit-btn', (e) => {
     console.log('im a click');
     $(e.target).parent().next('.edit-movie').toggleClass('hidden');
 });
-
 
 $(document).on('mouseenter', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
@@ -45,6 +48,7 @@ $(document).on('mouseleave', '.movie-item', (e) => {
     $(e.target).children('.delete-btn').toggleClass('hidden');
 });
 
+//Edit Movie Function
 $(document).on('click', '.submit-edit', (e) =>{
     e.preventDefault();
     const ratingEdit = $(e.target).parent().children()[3].value;
@@ -57,8 +61,10 @@ $(document).on('click', '.submit-edit', (e) =>{
     });
 });
 
+//Delete Movie Function
 $(document).on('click', '.delete-btn', (e) =>{
     e.preventDefault();
+    $(e.target).attr('disabled', true);
     const id = $(e.target).parent().next().children()[1].id;
 
     getMovies(id, deleteOptions());
