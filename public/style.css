@@ -6,4 +6,7 @@ html, body {
 .hidden {
     display: none;
 }
-
+.movie-titles{
+    font-size: 1.5em;
+    font-weight: bold;
+}
