@@ -25,4 +25,13 @@ export const putOptions = (moviePost) => {
     }
 };
 
+export const deleteOptions = (moviePost) => {
+    return {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(moviePost),
+    }
+};
 

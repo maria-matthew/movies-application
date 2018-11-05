@@ -19,6 +19,7 @@ export const loadedPage = (movies) => {
     movies.forEach(({ title, rating, id }) => {htmlOutput += `
         <li class="movie-item">The rating for ${title} is ${rating}
             <button class="edit-btn hidden">Edit</button>
+            <button class="delete-btn hidden">Delete</button>
         </li>
         <form class="edit-movie hidden">
             <label for="${id}">Title: </label>
@@ -26,13 +27,11 @@ export const loadedPage = (movies) => {
             <label for="${id}rating">Rating: </label>
                 <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
             <input type="submit" class="submit-edit">
-        </form>`;
+        </form>
+        `;
     });
     return htmlOutput;
 };
 
-export const editMovie = () => {
-
-};
 
 
