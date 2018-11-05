@@ -1,8 +1,10 @@
+"use strict";
+
 import $ from '../node_modules/jquery'
 
 
 export const loadingPage = () => {
-    $('#ul-for-movies').html('LOADING!!!!! BITCH')
+    $('#ul-for-movies').html('LOADING...');
 };
 
 
