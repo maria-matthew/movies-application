@@ -40,6 +40,10 @@ $('#movie-add-btn').click((e) => {
 
 //problem statement: have edit button appear when user hovers over list
 
+// $('.movie-item').hover(() => {
+//     console.log('hover');
+//     $('.edit-btn').toggleClass('hidden');
+// });
 
 $(document).on('click', '.edit-btn', (e) => {
     console.log('im a click');
@@ -49,10 +53,6 @@ $(document).on('click', '.edit-btn', (e) => {
     $(e.target).parent().next('.edit-movie').toggleClass('hidden');
 });
 
-// $('.movie-item').hover(() => {
-//     console.log('hover');
-//     $('.edit-btn').toggleClass('hidden');
-// });
 
 $(document).on('mouseenter', '.movie-item', (e) => {
     console.log('hover over');
@@ -64,7 +64,12 @@ $(document).on('mouseleave', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
 });
 
-$(document).on('click', 'submit-edit', () =>{
+$(document).on('click', 'submit-edit', (e) =>{
     $(e.target).preventDefault();
-
+    const title = $("#").val();
+    const rating = $("#rating").val();
+    getMovies(postOptions({title, rating}));
+    getMovies().then((movies) => {
+        $('#ul-for-movies').html(loadedPage(movies));
+    });
 });
