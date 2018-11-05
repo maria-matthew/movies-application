@@ -22,13 +22,13 @@ export const loadedPage = (movies) => {
         </li>
         <form class="edit-movie hidden">
             <label for="${id}">Title: </label>
-                <input type="text" id="${id}" value="${title}">
+                <input type="text" id="${id}" value="${title}" class="title-edit">
             <label for="${id}rating">Rating: </label>
-                <input type="text" id="${id}rating" value="${rating}">
+                <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
             <input type="submit" class="submit-edit">
-        </form>`
+        </form>`;
     });
-    return htmlOutput
+    return htmlOutput;
 };
 
 export const editMovie = () => {

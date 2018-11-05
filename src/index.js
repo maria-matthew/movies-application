@@ -1,7 +1,7 @@
 /**
  * es6 modules and imports
  */
-import { getMovies, postOptions} from './api.js';
+import { getMovies, postOptions, putOptions} from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
 
@@ -21,7 +21,7 @@ $('#movie-add-btn').click((e) => {
   const title = $("#movie-title-input").val();
   const rating = $("#rating").val();
   console.log("test");
-  getMovies(postOptions({title, rating}));
+  getMovies('', postOptions({title, rating}));
   getMovies().then((movies) => {
       $('#ul-for-movies').html(loadedPage(movies));
   });
@@ -64,11 +64,23 @@ $(document).on('mouseleave', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
 });
 
-$(document).on('click', 'submit-edit', (e) =>{
-    $(e.target).preventDefault();
-    const title = $("#").val();
-    const rating = $("#rating").val();
-    getMovies(postOptions({title, rating}));
+$(document).on('click', '.submit-edit', (e) =>{
+    e.preventDefault();
+    // $(e.target).preventDefault();
+    $('body').css('background-color', 'yellow');
+    // const title = $("#").val();
+    // const rating = $("#rating").val();
+    // const titleEdit = $(e.target).next().val;
+    const ratingEdit = $(e.target).parent().children()[3].value;
+    // const ratingEdit = e ;
+    // const titleEdit = $(e.target).parent().children()[1].value;
+    const titleEdit = parseFloat($(e.target).parent().children()[1].value);
+    const id = $(e.target).parent().children()[1].id;
+
+    console.log(id);
+    // console.log(typeof titleEdit);
+    // console.log(typeof ratingEdit);
+    getMovies(id, putOptions({titleEdit, ratingEdit}));
     getMovies().then((movies) => {
         $('#ul-for-movies').html(loadedPage(movies));
     });
