@@ -1,7 +1,7 @@
 /**
  * es6 modules and imports
  */
-import { getMovies, postOptions, putOptions} from './api.js';
+import { getMovies, postOptions, putOptions, deleteOptions} from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
 
@@ -37,10 +37,12 @@ $(document).on('click', '.edit-btn', (e) => {
 
 $(document).on('mouseenter', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
+    $(e.target).children('.delete-btn').toggleClass('hidden');
 });
 
 $(document).on('mouseleave', '.movie-item', (e) => {
     $(e.target).children('.edit-btn').toggleClass('hidden');
+    $(e.target).children('.delete-btn').toggleClass('hidden');
 });
 
 $(document).on('click', '.submit-edit', (e) =>{
@@ -50,6 +52,16 @@ $(document).on('click', '.submit-edit', (e) =>{
     const id = $(e.target).parent().children()[1].id;
 
     getMovies(id, putOptions({title:titleEdit, rating:ratingEdit}));
+    getMovies().then((movies) => {
+        $('#ul-for-movies').html(loadedPage(movies));
+    });
+});
+
+$(document).on('click', '.delete-btn', (e) =>{
+    e.preventDefault();
+    const id = $(e.target).parent().next().children()[1].id;
+
+    getMovies(id, deleteOptions());
     getMovies().then((movies) => {
         $('#ul-for-movies').html(loadedPage(movies));
     });
