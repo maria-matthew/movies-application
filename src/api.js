@@ -1,7 +1,7 @@
 "use strict";
 
-export const getMovies = (options) => {
-    return fetch(`/api/movies`, options)
+export const getMovies = (id = '', options) => {
+    return fetch(`/api/movies/${id}`, options)
         .then(response => response.json());
 };
 
@@ -15,9 +15,9 @@ export const postOptions = (moviePost) => {
     }
 };
 
-export const patchOptions = (moviePost) => {
+export const putOptions = (moviePost) => {
     return {
-        method: 'PATCH',
+        method: 'PUT',
         headers: {
         'Content-Type': 'application/json',
         },
