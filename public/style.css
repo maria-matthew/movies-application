@@ -1,12 +1,31 @@
 html, body {
     height: 100%;
+}
+
+.header {
     background: linear-gradient(to bottom left, #f09819, #edde5d);
+    padding: 60px 0 60px 0;
+}
+
+.mb-5 {
+    margin-bottom: 5em;
 }
 
 .hidden {
     display: none;
 }
+
+.content-area {
+    margin-top: 30px;
+    border-radius: 25px;
+    padding: 15px 10px 0 10px;
+}
+
 .movie-titles{
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.movie-item:hover {
+    background-color: rgba(255, 255, 255, 0.4);
 }
