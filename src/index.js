@@ -7,8 +7,7 @@ import { loadingPage, loadedPage } from './loading';
 import { getPosterImage, getMoviePoster } from "./movie-api";
 
 loadingPage();
-// console.log(getMoviePoster('Jack Reacher'));
-// console.log(getPosterImage('Jack Reacher'));
+
 //Loaded Page
 getMovies().then((movies) => {
     $('#section-for-movies').html(loadedPage(movies));
@@ -27,7 +26,6 @@ $('#movie-add-btn').click((e) => {
     const rating = $("#rating").val();
     if(title.length !== 0){
         $(e.target).attr('disabled', true);
-
         getMovies('', createOptions('POST', {title, rating}));
         getMovies().then((movies) => {
             $(e.target).attr('disabled', false);
@@ -36,13 +34,11 @@ $('#movie-add-btn').click((e) => {
     } else{
         console.log('no dice');
     }
-
 });
 
 //Edit/Delete Button Animations
 
 $(document).on('click', '.edit-btn', (e) => {
-    console.log('im a click');
     e.preventDefault();
     let editID = $(e.target).parent().parent().next().children('form').attr('id');
     $(`#${editID}`).slideToggle();

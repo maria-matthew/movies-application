@@ -11,14 +11,39 @@
       "id": 4
     },
     {
-      "title": "star",
-      "rating": "1",
+      "title": "stars",
+      "rating": "4",
       "id": 5
     },
     {
       "title": "star wars",
       "rating": "1",
       "id": 6
+    },
+    {
+      "title": "spiderman",
+      "rating": "1",
+      "id": 8
+    },
+    {
+      "title": "spiderman 3",
+      "rating": "1",
+      "id": 9
+    },
+    {
+      "title": "lego",
+      "rating": "4",
+      "id": 10
+    },
+    {
+      "title": "hulk",
+      "rating": "1",
+      "id": 11
+    },
+    {
+      "title": "batman dark knight",
+      "rating": "4",
+      "id": 12
     }
   ]
 }
