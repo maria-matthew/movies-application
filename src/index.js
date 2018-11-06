@@ -42,25 +42,29 @@ $('#movie-add-btn').click((e) => {
 //Edit/Delete Button Animations
 $(document).on('click', '.edit-btn', (e) => {
     console.log('im a click');
-    $(e.target).parent().next('.edit-movie').toggleClass('hidden');
+    $(e.target).parent().next().children('.edit-movie').toggleClass('hidden');
+
 });
 
-$(document).on('mouseenter', '.movie-item', (e) => {
-    $(e.target).children('.edit-btn').toggleClass('hidden');
-    $(e.target).children('.delete-btn').toggleClass('hidden');
-});
-
-$(document).on('mouseleave', '.movie-item', (e) => {
-    $(e.target).children('.edit-btn').toggleClass('hidden');
-    $(e.target).children('.delete-btn').toggleClass('hidden');
-});
+// $(document).on('mouseover', '.movie-item', (e) => {
+//     $(e.target).children('.function-btn').toggleClass('invisible');
+//     // $(e.target).parent().next('.function-btn').removeClass('invisible');
+//
+// });
+//
+// $(document).on('mouseout', '.movie-item', (e) => {
+//     // $(e.target).children('.function-btn').addClass('invisible');
+//     // $(e.target).parent().next('.function-btn').addClass('invisible');
+//
+// });
 
 //Edit Movie Function
 $(document).on('click', '.submit-edit', (e) =>{
     e.preventDefault();
     const ratingEdit = $(e.target).parent().children()[3].value;
     const titleEdit = $(e.target).parent().children()[1].value;
-    const id = $(e.target).parent().children()[1].id;
+    const id = $(e.target).attr('name');
+    console.log(id);
 
     getMovies(id, putOptions({title:titleEdit, rating:ratingEdit}));
     getMovies().then((movies) => {
@@ -72,7 +76,7 @@ $(document).on('click', '.submit-edit', (e) =>{
 $(document).on('click', '.delete-btn', (e) =>{
     e.preventDefault();
     $(e.target).attr('disabled', true);
-    const id = $(e.target).parent().next().children()[1].id;
+    const id = $(e.target).attr('id');
 
     getMovies(id, deleteOptions());
     getMovies().then((movies) => {

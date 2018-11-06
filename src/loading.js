@@ -10,6 +10,7 @@ export const loadingPage = () => {
 
 const addImage = (selector, searchWords) => {
 
+
     getMoviePoster(searchWords).then(response => response.results[0].poster_path)
         .then((poster) => {
             $(selector).attr('src', `https://image.tmdb.org/t/p/w500/${poster}`);
@@ -23,25 +24,31 @@ export const loadedPage = (movies) => {
     let htmlOutput = '';
     //form hidden until edit button is clicked
     movies.forEach(({ title, rating, id }) => {htmlOutput += `
-        <div class="movie-item col s12">
-            <!--<div class="col s6">-->
-            <img src="" alt="" id="${title}">
-            <div class="col s6"><span class="movie-titles">${title} Rating: ${rating}</span>
-                <button class="edit-btn hidden">Edit</button>
-                <button class="delete-btn hidden">Delete</button>
+        <div class="col s4 mb-5 center white-text">
+            <div class="movie-item row">
+                <img src="" alt="" id="${title}">
+                <div class="col s12">
+                    <span class="movie-titles">${title} <br>Rating: ${rating}</span>
+                </div>
+                <div class="function-btn col s12">
+                    <button class="edit-btn btn orange accent-4">Edit</button>
+                    <button class="delete-btn btn orange accent-4" id="${id}">Delete</button>
+                </div>
+                <div class="col s12">
+                    <form class="edit-movie hidden row">
+                        <label class="col s6" for="${id}title">Title: </label>
+                    <input type="text" id="${id}title" value="${title}" class="title-edit">
+                        <label class="col s6" for="${id}rating">Rating: </label>
+                    <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
+                        <input type="submit" class="submit-edit btn orange accent-4" name="${id}">
+                    </form>
+                </div>        
             </div>
         </div>
         `;
-        console.log(addImage(`#${id}`, title));
+        // addImage(`#${title}`, title);
     });
     return htmlOutput;
 };
 
 
-// <form class="edit-movie hidden row">
-//     <label class="col s6" for="${id}">Title: </label>
-// <input type="text" id="${id}" value="${title}" class="title-edit">
-//     <label class="col s6" for="${id}rating">Rating: </label>
-// <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
-//     <input type="submit" class="submit-edit btn">
-//     </form>

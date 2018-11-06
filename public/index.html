@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <title>My Application</title>
-    <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
 
-    <div class="container">
-        <img src="" alt="">
-        <section class="row" id="ul-for-movies">
+    <div class="header">
+        <header class="row">
+            <h1 class="center">Maria and Matt Movies</h1>
+        </header>
+    </div>
 
-            <!--Movie Names/Ratings-->
-
-        </section>
-
+    <div class="container grey darken-3 content-area">
         <section class="row">
             <form class="hidden" action="" id="movie-add-form">
                 <label class="col s6" for="movie-title-input">Please Enter A Movie Title
@@ -32,9 +31,15 @@
                     </select>
                     <label for="rating">Please Select A Rating for The Movie</label>
                 </div>
-                <button class="col s2 btn" id="movie-add-btn">Submit</button>
+                <button class="col s2 btn orange accent-4" id="movie-add-btn">Submit</button>
             </form>
         </section>
+        <section class="row" id="ul-for-movies">
+
+            <!--Movie Names/Ratings-->
+
+        </section>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
