@@ -32,29 +32,25 @@ export const loadedPage = (movies) => {
     movies.forEach(({ title, rating, id }) => {
         let idTitle = title.split(' ').join('-');
         htmlOutput += `
-        <div class="col s4 mb-5 center white-text">
+        <div class="col l4 m6 s12 mb-5 center white-text">
             <div class="movie-item row">
-                <div class="col 12">
-                    <div class="row">
-                        <div class="col 4 offset-4">                
-                            <img src="" alt="movie poster image" id="${idTitle}" class="movie-poster materialboxed" width="300em">
-                        </div>
-                    </div>
+                <div class="col s12">
+                    <img src="" alt="movie poster image" id="${idTitle}" class="movie-poster materialboxed img-fluid" width="300em">
                 </div>
                 <div class="col s12">
                     <span class="movie-titles">${title} <br>Rating: ${rating}</span>
                 </div>
                 <div class="function-btn col s12">
-                    <button class="edit-btn btn orange accent-4">Edit</button>
-                    <button class="delete-btn btn orange accent-4" id="${id}">Delete</button>
+                    <a class="btn-floating btn-large waves-effect waves-light blue"><i class="edit-btn material-icons">create</i></a>
+                    <a class="btn-floating btn-large waves-effect waves-light blue"><i class="delete-btn material-icons" id="${id}">remove</i></a>
                 </div>
-                <div class="col s12">
-                    <form class="edit-movie hidden row">
+                <div class="col s10 offset-s1">
+                    <form class="edit-movie hidden row" id="${id}edit-form">
                         <label class="col s6" for="${id}title">Title: </label>
                     <input type="text" id="${id}title" value="${title}" class="title-edit">
                         <label class="col s6" for="${id}rating">Rating: </label>
                     <input type="text" id="${id}rating" value="${rating}" class="rating-edit">
-                        <input type="submit" class="submit-edit btn orange accent-4" name="${id}">
+                        <input type="submit" class="submit-edit btn blue" id="${id}-submit">
                     </form>
                 </div>        
             </div>
@@ -64,3 +60,6 @@ export const loadedPage = (movies) => {
     });
     return htmlOutput;
 };
+
+
+
