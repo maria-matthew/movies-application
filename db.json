@@ -16,11 +16,6 @@
       "id": 5
     },
     {
-      "title": "star wars",
-      "rating": "1",
-      "id": 6
-    },
-    {
       "title": "spiderman",
       "rating": "1",
       "id": 8
@@ -31,12 +26,7 @@
       "id": 9
     },
     {
-      "title": "lego",
-      "rating": "4",
-      "id": 10
-    },
-    {
-      "title": "hulk",
+      "title": "star wars",
       "rating": "1",
       "id": 11
     },
@@ -44,6 +34,11 @@
       "title": "batman dark knight",
       "rating": "4",
       "id": 12
+    },
+    {
+      "title": "hocus pocus",
+      "rating": "1",
+      "id": 13
     }
   ]
 }

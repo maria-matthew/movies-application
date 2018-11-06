@@ -4,7 +4,6 @@
 import { getMovies, createOptions } from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
-import { getPosterImage, getMoviePoster } from "./movie-api";
 
 loadingPage();
 
@@ -17,7 +16,7 @@ getMovies().then((movies) => {
     console.log(error);
 });
 
-
+//IDEA: Add a movie that has a genre attained from the api
 
 //Add Movie Function
 $('#movie-add-btn').click((e) => {
@@ -36,8 +35,9 @@ $('#movie-add-btn').click((e) => {
     }
 });
 
-//Edit/Delete Button Animations
 
+//Edit/Delete Button Animations
+//Issue to work on: whenever the form is toggled, it affects the layout of all the movies
 $(document).on('click', '.edit-btn', (e) => {
     e.preventDefault();
     let editID = $(e.target).parent().parent().next().children('form').attr('id');
@@ -47,6 +47,7 @@ $(document).on('click', '.edit-btn', (e) => {
 
 
 //Edit Movie Function
+//grabs value of user input and turns it into and object to get added to the database
 $(document).on('click', '.submit-edit', (e) =>{
     e.preventDefault();
     const ratingEdit = $(e.target).parent().children()[3].value;
@@ -61,6 +62,7 @@ $(document).on('click', '.submit-edit', (e) =>{
 });
 
 //Delete Movie Function
+//grabs id of movie selected and sends id to get deleted
 $(document).on('click', '.delete-btn', (e) =>{
     e.preventDefault();
     $(e.target).parent().attr('disabled', true);
