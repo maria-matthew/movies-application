@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>My Application</title>
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./style.css" />
 </head>
@@ -20,7 +22,7 @@
                 <label class="col s6" for="movie-title-input">Please Enter A Movie Title
                     <input type="text" id="movie-title-input">
                 </label>
-                <div class="input-field col s4">
+                <div class="input-field col m4 s6">
                     <select name="rating" id="rating">
                         <option value="" disabled>Choose A Rating</option>
                         <option value="1" selected>1</option>
@@ -29,9 +31,9 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                     </select>
-                    <label for="rating">Please Select A Rating for The Movie</label>
+                    <label for="rating">Select A Rating</label>
                 </div>
-                <button class="col s2 btn orange accent-4" id="movie-add-btn">Submit</button>
+                <button class="col m2 s12 btn blue" id="movie-add-btn">Submit</button>
             </form>
         </section>
         <section class="row" id="ul-for-movies">
