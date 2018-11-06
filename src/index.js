@@ -11,7 +11,7 @@ loadingPage();
 // console.log(getPosterImage('Jack Reacher'));
 //Loaded Page
 getMovies().then((movies) => {
-    $('#ul-for-movies').html(loadedPage(movies));
+    $('#section-for-movies').html(loadedPage(movies));
     $('#movie-add-form').removeClass('hidden');
 }).catch((error) => {
     alert('Oh no! Something went wrong.\nCheck the console for details.');
@@ -31,7 +31,7 @@ $('#movie-add-btn').click((e) => {
         getMovies('', createOptions('POST', {title, rating}));
         getMovies().then((movies) => {
             $(e.target).attr('disabled', false);
-            $('#ul-for-movies').html(loadedPage(movies));
+            $('#section-for-movies').html(loadedPage(movies));
         });
     } else{
         console.log('no dice');
@@ -60,7 +60,7 @@ $(document).on('click', '.submit-edit', (e) =>{
 
     getMovies(id, createOptions('PUT', {title:titleEdit, rating:ratingEdit}));
     getMovies().then((movies) => {
-        $('#ul-for-movies').html(loadedPage(movies));
+        $('#section-for-movies').html(loadedPage(movies));
     });
 });
 
@@ -72,6 +72,6 @@ $(document).on('click', '.delete-btn', (e) =>{
 
     getMovies(id, createOptions('delete'));
     getMovies().then((movies) => {
-        $('#ul-for-movies').html(loadedPage(movies));
+        $('#section-for-movies').html(loadedPage(movies));
     });
 });

@@ -5,7 +5,25 @@ import { getMoviePoster} from "./movie-api";
 
 
 export const loadingPage = () => {
-    $('#ul-for-movies').html('LOADING...');
+    $('#section-for-movies').html(` 
+       <div class="col s12">
+            <div class="row"><span class="white-text">Loading...</span></div>
+            <div class="row">
+                <div class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-red-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+       </div>                       
+         
+`);
 };
 
 const addImage = (title) => {
