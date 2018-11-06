@@ -5,6 +5,10 @@ export const getMovies = (id = '', options) => {
         .then(response => response.json());
 };
 
+
+// REFACTORED the options methods to be one so we
+// just send in the method type and the object we
+// are working with
 export const createOptions = (method, movieObj) => {
     return {
         method: `${method}`,
@@ -15,34 +19,3 @@ export const createOptions = (method, movieObj) => {
     }
 };
 
-
-//
-// export const postOptions = (moviePost) => {
-//     return {
-//         method: 'POST',
-//         headers: {
-//         'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(moviePost),
-//     }
-// };
-//
-// export const putOptions = (moviePost) => {
-//     return {
-//         method: 'PUT',
-//         headers: {
-//         'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(moviePost),
-//     }
-// };
-//
-// export const deleteOptions = (moviePost) => {
-//     return {
-//         method: 'DELETE',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(moviePost),
-//     }
-// };

@@ -4,6 +4,7 @@ import $ from '../node_modules/jquery'
 import { getMoviePoster} from "./movie-api";
 
 
+//adds loading image
 export const loadingPage = () => {
     $('#section-for-movies').html(` 
        <div class="col s12">
@@ -25,32 +26,40 @@ export const loadingPage = () => {
 `);
 };
 
+//function takes in movie title, gets info for path from api and styles the id with that title name
 const addImage = (title) => {
-    let searchWords = title.split(' ').join('+');
+    //grabs path for movie poster image
 
-    getMoviePoster(searchWords).then(response => {
+    getMoviePoster(title).then(response => {
+        console.log(response);
         return response.results[0].poster_path;
     }).then((poster) => {
+        //attachs path to the end of the image source
         $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/w500${poster}`);
-        // $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/original${poster}`);
     });
 
 };
 
+//STYLE IDEAS
 //refactor to a for loop so that after every third element a new row is created
+
 //Add select for rating edit feature
+
+//Add modals with description of the movie to pop up, when image is clicked
+
 
 //each movie starts with a form that is hidden until the edit button is pressed
 export const loadedPage = (movies) => {
     let htmlOutput = '';
     //form hidden until edit button is clicked
     movies.forEach(({ title, rating, id }) => {
-        let idTitle = title.split(' ').join('-');
+        let idTitle = title.split(' ').join('-');//makes titles spinal so the od is one name even with titles with spaces
+
         htmlOutput += `
         <div class="col l4 m6 s12 mb-5 center white-text">
             <div class="movie-item row">
                 <div class="col s12">
-                    <img src="" alt="movie poster image" id="${idTitle}" class="movie-poster materialboxed img-fluid" width="300em">
+                    <img src="" alt="movie poster image" id="${idTitle}" class="movie-poster materialboxed img-fluid" >
                 </div>
                 <div class="col s12">
                     <span class="movie-titles">${title} <br>Rating: ${rating}</span>
@@ -71,7 +80,7 @@ export const loadedPage = (movies) => {
             </div>
         </div>
         `;
-        addImage(idTitle);
+        addImage(idTitle);//call the function to style the image right after it is added in the html
     });
     return htmlOutput;
 };
