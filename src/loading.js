@@ -21,8 +21,7 @@ export const loadingPage = () => {
                     </div>
                   </div>
             </div>
-       </div>                       
-         
+       </div>           
 `);
 };
 
@@ -30,18 +29,16 @@ const addImage = (title) => {
     let searchWords = title.split(' ').join('+');
 
     getMoviePoster(searchWords).then(response => {
-        console.log(response);
         return response.results[0].poster_path;
     }).then((poster) => {
-
         $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/w500${poster}`);
         // $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/original${poster}`);
     });
 
 };
 
-//problem happens styling wise where when you leave the list after
-//hovering over the edit button the direction of the toggle changes
+//refactor to a for loop so that after every third element a new row is created
+//Add select for rating edit feature
 
 //each movie starts with a form that is hidden until the edit button is pressed
 export const loadedPage = (movies) => {
@@ -78,6 +75,7 @@ export const loadedPage = (movies) => {
     });
     return htmlOutput;
 };
+
 
 
 
