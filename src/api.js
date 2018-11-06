@@ -5,33 +5,44 @@ export const getMovies = (id = '', options) => {
         .then(response => response.json());
 };
 
-export const postOptions = (moviePost) => {
+export const createOptions = (method, movieObj) => {
     return {
-        method: 'POST',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(moviePost),
-    }
-};
-
-export const putOptions = (moviePost) => {
-    return {
-        method: 'PUT',
-        headers: {
-        'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(moviePost),
-    }
-};
-
-export const deleteOptions = (moviePost) => {
-    return {
-        method: 'DELETE',
+        method: `${method}`,
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(moviePost),
+        body: JSON.stringify(movieObj),
     }
 };
 
+
+//
+// export const postOptions = (moviePost) => {
+//     return {
+//         method: 'POST',
+//         headers: {
+//         'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(moviePost),
+//     }
+// };
+//
+// export const putOptions = (moviePost) => {
+//     return {
+//         method: 'PUT',
+//         headers: {
+//         'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(moviePost),
+//     }
+// };
+//
+// export const deleteOptions = (moviePost) => {
+//     return {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(moviePost),
+//     }
+// };

@@ -8,14 +8,19 @@ export const loadingPage = () => {
     $('#ul-for-movies').html('LOADING...');
 };
 
-const addImage = (selector, searchWords) => {
+const addImage = (title) => {
+    let searchWords = title.split(' ').join('+');
 
+    getMoviePoster(searchWords).then(response => {
+        console.log(response);
+        return response.results[0].poster_path;
+    }).then((poster) => {
 
-    getMoviePoster(searchWords).then(response => response.results[0].poster_path)
-        .then((poster) => {
-            $(selector).attr('src', `https://image.tmdb.org/t/p/w500/${poster}`);
-        });
+        $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/w500${poster}`);
+    });
+
 };
+
 //problem happens styling wise where when you leave the list after
 //hovering over the edit button the direction of the toggle changes
 
@@ -26,7 +31,13 @@ export const loadedPage = (movies) => {
     movies.forEach(({ title, rating, id }) => {htmlOutput += `
         <div class="col s4 mb-5 center white-text">
             <div class="movie-item row">
-                <img src="" alt="" id="${title}">
+                <div class="col 12">
+                    <div class="row">
+                        <div class="col 4 offset-4">                
+                            <img src="" alt="" id="${title}" class="movie-poster materialboxed" width="300em">
+                        </div>
+                    </div>
+                </div>
                 <div class="col s12">
                     <span class="movie-titles">${title} <br>Rating: ${rating}</span>
                 </div>
@@ -46,9 +57,10 @@ export const loadedPage = (movies) => {
             </div>
         </div>
         `;
-        // addImage(`#${title}`, title);
+        addImage(title);
     });
     return htmlOutput;
 };
+
 
 

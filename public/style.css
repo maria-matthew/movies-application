@@ -6,6 +6,9 @@ html, body {
     background: linear-gradient(to bottom left, #f09819, #edde5d);
     padding: 60px 0 60px 0;
 }
+.movie-poster{
+    object-fit: cover;
+}
 
 .mb-5 {
     margin-bottom: 5em;

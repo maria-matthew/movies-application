@@ -1,7 +1,7 @@
 /**
  * es6 modules and imports
  */
-import { getMovies, postOptions, putOptions, deleteOptions} from './api.js';
+import { getMovies, createOptions } from './api.js';
 import $ from 'jquery';
 import { loadingPage, loadedPage } from './loading';
 import { getPosterImage, getMoviePoster } from "./movie-api";
@@ -11,31 +11,31 @@ loadingPage();
 // console.log(getPosterImage('Jack Reacher'));
 //Loaded Page
 getMovies().then((movies) => {
-  $('#ul-for-movies').html(loadedPage(movies));
-  $('#movie-add-form').removeClass('hidden');
+    $('#ul-for-movies').html(loadedPage(movies));
+    $('#movie-add-form').removeClass('hidden');
 }).catch((error) => {
-  alert('Oh no! Something went wrong.\nCheck the console for details.');
-  console.log(error);
+    alert('Oh no! Something went wrong.\nCheck the console for details.');
+    console.log(error);
 });
 
 
 
 //Add Movie Function
 $('#movie-add-btn').click((e) => {
-  e.preventDefault();
-  const title = $("#movie-title-input").val();
-  const rating = $("#rating").val();
-  if(title.length !== 0){
-      $(e.target).attr('disabled', true);
+    e.preventDefault();
+    const title = $("#movie-title-input").val();
+    const rating = $("#rating").val();
+    if(title.length !== 0){
+        $(e.target).attr('disabled', true);
 
-      getMovies('', postOptions({title, rating}));
-      getMovies().then((movies) => {
-          $(e.target).attr('disabled', false);
-          $('#ul-for-movies').html(loadedPage(movies));
-      });
-  } else{
-      console.log('no dice');
-  }
+        getMovies('', createOptions('POST', {title, rating}));
+        getMovies().then((movies) => {
+            $(e.target).attr('disabled', false);
+            $('#ul-for-movies').html(loadedPage(movies));
+        });
+    } else{
+        console.log('no dice');
+    }
 
 });
 
@@ -66,7 +66,7 @@ $(document).on('click', '.submit-edit', (e) =>{
     const id = $(e.target).attr('name');
     console.log(id);
 
-    getMovies(id, putOptions({title:titleEdit, rating:ratingEdit}));
+    getMovies(id, createOptions('PUT', {title:titleEdit, rating:ratingEdit}));
     getMovies().then((movies) => {
         $('#ul-for-movies').html(loadedPage(movies));
     });
@@ -78,7 +78,7 @@ $(document).on('click', '.delete-btn', (e) =>{
     $(e.target).attr('disabled', true);
     const id = $(e.target).attr('id');
 
-    getMovies(id, deleteOptions());
+    getMovies(id, createOptions('delete'));
     getMovies().then((movies) => {
         $('#ul-for-movies').html(loadedPage(movies));
     });
