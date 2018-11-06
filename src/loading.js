@@ -17,6 +17,7 @@ const addImage = (title) => {
     }).then((poster) => {
 
         $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/w500${poster}`);
+        // $(`#${title}`).attr('src', `https://image.tmdb.org/t/p/original${poster}`);
     });
 
 };
@@ -28,13 +29,15 @@ const addImage = (title) => {
 export const loadedPage = (movies) => {
     let htmlOutput = '';
     //form hidden until edit button is clicked
-    movies.forEach(({ title, rating, id }) => {htmlOutput += `
+    movies.forEach(({ title, rating, id }) => {
+        let idTitle = title.split(' ').join('-');
+        htmlOutput += `
         <div class="col s4 mb-5 center white-text">
             <div class="movie-item row">
                 <div class="col 12">
                     <div class="row">
                         <div class="col 4 offset-4">                
-                            <img src="" alt="" id="${title}" class="movie-poster materialboxed" width="300em">
+                            <img src="" alt="movie poster image" id="${idTitle}" class="movie-poster materialboxed" width="300em">
                         </div>
                     </div>
                 </div>
@@ -57,10 +60,7 @@ export const loadedPage = (movies) => {
             </div>
         </div>
         `;
-        addImage(title);
+        addImage(idTitle);
     });
     return htmlOutput;
 };
-
-
-
